@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>放大镜</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      #demo {
+        display: block;
+        width: 400px;
+        height: 255px;
+        margin: 50px;
+        position: relative;
+        border: 1px solid #ccc;
+      }
+
+      #small-box {
+        position: relative;
+        z-index: 1;
+      }
+
+      #float-box {
+        display: none;
+        width: 160px;
+        height: 120px;
+        position: absolute;
+        background: #ffffcc;
+        border: 1px solid #ccc;
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+
+      #mark {
+        position: absolute;
+        display: block;
+        width: 400px;
+        height: 255px;
+        background-color: #fff;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        z-index: 10;
+      }
+
+      #big-box {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 460px;
+        width: 400px;
+        height: 300px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        z-index: 1;
+      }
+
+      #big-box img {
+        position: absolute;
+        z-index: 5;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo">
+      <div id="small-box">
+        <div id="mark"></div>
+        <div id="float-box"></div>
+        <img src="macbook-small.jpg" />
+      </div>
+      <div id="big-box"><img src="macbook-big.jpg" /></div>
+    </div>
+
+    <script>
+      $(function() {
+        var markWidth = $('#mark').width();
+        var markHeight = $('#mark').height();
+        var floatBoxWidth = $('#float-box').width();
+        var floatBoxHeight = $('#float-box').height();
+        var percent = $('#big-box').width() / $('#float-box').width();
+        $('#mark')
+          .on('mouseover', function() {
+            $('#float-box').show();
+            $('#big-box').show();
+          })
+          .on('mouseout', function() {
+            $('#float-box').hide();
+            $('#big-box').hide();
+          })
+          .on('mousemove', function(e) {
+            e = e || window.event;
+            var markOffset = $('#mark').offset();
+            var left = e.clientX - markOffset.left - floatBoxWidth / 2;
+            var top = e.clientY - markOffset.top - floatBoxHeight / 2;
+            if (left < 0) {
+              left = 0;
+            } else if (left > markWidth - floatBoxWidth) {
+              left = markWidth - floatBoxWidth;
+            }
+            if (top < 0) {
+              top = 0;
+            } else if (top > markHeight - floatBoxHeight) {
+              top = markHeight - floatBoxHeight;
+            }
+            $('#float-box').css({ left: left + 'px', top: top + 'px' });
+            $('#big-box>img').css({ left: -left * percent + 'px', top: -top * percent + 'px' });
+          });
+      });
+    </script>
+  </body>
+</html>
