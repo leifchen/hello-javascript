@@ -7,3 +7,5 @@
 ## [常用的网页加载进度条](https://www.imooc.com/learn/858)
 
 ## [Javascript实现二叉树算法](https://www.imooc.com/learn/888)
+
+## [图片展示特效](https://www.imooc.com/learn/31)
