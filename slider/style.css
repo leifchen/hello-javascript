@@ -1,0 +1,164 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  padding: 50px 0px;
+  background-color: #fff;
+  font-family: "Avenir Next";
+  font-size: 14px;
+  color: #555;
+  -webkit-font-smoothing: antialiased;
+}
+
+.slider .main .main-i,
+.slider .main,
+.slider {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+/*幻灯片区域的样式*/
+.slider .main {
+  overflow: hidden;
+}
+
+.slider .main .main-i img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+}
+
+.slider .main .main-i .caption {
+  position: absolute;
+  right: 60%;
+  top: 30%;
+}
+
+.slider .main .main-i .caption h2 {
+  font-size: 40px;
+  line-height: 50px;
+  color: #b5b5b5;
+  text-align: right;
+}
+
+.slider .main .main-i .caption h3 {
+  font-size: 55px;
+  line-height: 60px;
+  color: #000000;
+  text-align: right;
+  font-family: 'Andale Mono Regular';
+}
+
+/*控制按钮区域的样式*/
+.slider .ctrl {
+  width: 100%;
+  height: 13px;
+  position: absolute;
+  bottom: -13px;
+  left: 0px;
+  text-align: center;
+  line-height: 13px;
+}
+
+.slider .ctrl .ctrl-i {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 13px;
+  background-color: #666;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  margin-left: 1px;
+}
+
+.slider .ctrl .ctrl-i img {
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+  left: 0px;
+  opacity: 0;
+  z-index: -1;
+  -webkit-transition: all .2s;
+}
+
+/*hover 控制按钮样式*/
+.slider .ctrl .ctrl-i:hover {
+  background-color: #f0f0f0;
+}
+
+.slider .ctrl .ctrl-i:hover img {
+  bottom: 13px;
+
+  -webkit-box-reflect: below 0px -webkit-gradient(linear,
+      left top,
+      left bottom,
+      from(transparent),
+      color-stop(50%, transparent),
+      to(rgba(255, 255, 255, 0.3)));
+  opacity: 1;
+  z-index: 0;
+}
+
+
+/*active 当前展示的状态*/
+.slider .ctrl .ctrl-i-active:hover,
+.slider .ctrl .ctrl-i-active {
+  background-color: #000;
+}
+
+.slider .ctrl .ctrl-i-active:hover img {
+  z-index: -1;
+  opacity: 0;
+}
+
+/*幻灯片切换*/
+.slider .main .main-i-right,
+.slider .main .main-i {
+  position: absolute;
+  left: -50%;
+  top: 0;
+  opacity: 0;
+  -webkit-transition: all .5s;
+}
+
+.slider .main .main-i-right {
+  left: 50%;
+}
+
+
+.slider .main .main-i h2 {
+  margin-right: 45px;
+}
+
+.slider .main .main-i h3 {
+  margin-right: -45px;
+}
+
+.slider .main .main-i h2,
+.slider .main .main-i h3 {
+  opacity: 0;
+  -webkit-transition: all 1s .5s;
+}
+
+#main_background,
+.slider .main .main-i-active {
+  left: 0%;
+  opacity: 1;
+}
+
+#main_background {
+  z-index: -1;
+}
+
+.slider .main .main-i-active .caption {
+  margin-right: 5%;
+}
+
+.slider .main .main-i-active h2,
+.slider .main .main-i-active h3 {
+  opacity: 1;
+  margin-right: 0px;
+}
